@@ -11,7 +11,15 @@ class RMCharacterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let request = RMRequest(endpoint: "character")
+        RMService.shared.fetchData(request, expecting: RMCharacter.self) { result in
+            switch result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
