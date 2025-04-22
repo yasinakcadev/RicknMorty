@@ -12,8 +12,7 @@ class RMCharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let request = RMRequest(endpoint: "character")
-        RMService.shared.fetchData(request, expecting: RMCharacter.self) { result in
+        RMService.shared.fetchData(RMRequest.listCharactersRequests, expecting: RMAllCharacters.self) { result in
             switch result {
             case .success(let result):
                 print(result)

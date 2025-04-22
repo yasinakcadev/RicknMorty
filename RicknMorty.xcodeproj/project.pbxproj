@@ -21,6 +21,7 @@
 		EC44ED2F2DB6F0610096D25D /* RMCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC44ED2E2DB6F0600096D25D /* RMCharacter.swift */; };
 		EC44ED312DB6F11E0096D25D /* RMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC44ED302DB6F11E0096D25D /* RMService.swift */; };
 		EC44ED342DB6F5A20096D25D /* RMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC44ED332DB6F5A20096D25D /* RMRequest.swift */; };
+		ECFE67D92DB83A910067079F /* RMAllCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE67D82DB83A910067079F /* RMAllCharacters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EC44ED2E2DB6F0600096D25D /* RMCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacter.swift; sourceTree = "<group>"; };
 		EC44ED302DB6F11E0096D25D /* RMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMService.swift; sourceTree = "<group>"; };
 		EC44ED332DB6F5A20096D25D /* RMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRequest.swift; sourceTree = "<group>"; };
+		ECFE67D82DB83A910067079F /* RMAllCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAllCharacters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				EC44ED212DB6E6F00096D25D /* RMLocation.swift */,
 				EC44ED232DB6E72C0096D25D /* RMEpisode.swift */,
 				EC44ED2E2DB6F0600096D25D /* RMCharacter.swift */,
+				ECFE67D82DB83A910067079F /* RMAllCharacters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFE67D92DB83A910067079F /* RMAllCharacters.swift in Sources */,
 				EC44ED2D2DB6E7AB0096D25D /* RMSettingsViewController.swift in Sources */,
 				EC44ED0B2DB6BB380096D25D /* RMTabViewController.swift in Sources */,
 				EC44ED272DB6E78E0096D25D /* RMCharacterViewController.swift in Sources */,

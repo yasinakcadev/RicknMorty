@@ -23,6 +23,7 @@ final class RMRequest {
     var urlString: String {
         var string = baseURL
         string += "/"
+        string += endpoint
         
         if !pathComponents.isEmpty {
             pathComponents.forEach { item in
@@ -34,7 +35,7 @@ final class RMRequest {
             string += "?"
             let argStr = queryParameters.compactMap ({ item in
                 guard let value = item.value else { return nil }
-                return "\(item.name)=\(item.value)"
+                return "\(item.name)=\(value)"
             }).joined(separator: "&")
             
             string += argStr
@@ -47,4 +48,8 @@ final class RMRequest {
     var url: URL? {
         return URL(string: urlString)
     }
+}
+
+extension RMRequest {
+    static let listCharactersRequests = RMRequest(endpoint: "character")
 }
