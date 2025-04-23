@@ -41,8 +41,8 @@ final class RMCharacterListView: UIView {
         spinner.startAnimating()
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self,
-                                forCellWithReuseIdentifier: "cell")
+        collectionView.register(RMCharacterCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RMCharacterCollectionViewCell.identifier)
         collectionView.isHidden = true
         collectionView.alpha = 0
     }
@@ -86,8 +86,11 @@ extension RMCharacterListView: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterCollectionViewCell.identifier, for: indexPath) as? RMCharacterCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let viewModel = RMCharacterCollectionViewCellViewModel(name: "deneme", status: "yanilma", imageURL: URL(string: "https://static.tvtropes.org/pmwiki/pub/images/abcb6534_7913_4eb1_a7a5_62b081ebc628.png"))
+        cell.configure(with: viewModel)
         return cell
     }
     
