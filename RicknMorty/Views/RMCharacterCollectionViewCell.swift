@@ -29,7 +29,8 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
     
     private func style() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
@@ -73,7 +74,7 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
     
     public func configure(with viewModel: RMCharacterCollectionViewCellViewModel) {
         nameLabel.text = viewModel.name
-        statusLabel.text = viewModel.status
+        statusLabel.text = viewModel.statusText
         viewModel.fetchImage { result in
             switch result {
             case .success(let data):

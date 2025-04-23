@@ -12,6 +12,10 @@ struct RMCharacterCollectionViewCellViewModel {
     let status: String?
     let imageURL: URL?
     
+    var statusText: String {
+        return "Status: \(self.status ?? "")"
+    }
+    
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = self.imageURL else {
             completion(.failure(URLError(.badURL)))

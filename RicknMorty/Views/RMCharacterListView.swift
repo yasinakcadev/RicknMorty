@@ -27,6 +27,8 @@ final class RMCharacterListView: UIView {
         style()
         layout()
         setupCollectionView()
+        viewModel.delegate = self
+        viewModel.fetchAllCharacters()
     }
     
     required init?(coder: NSCoder) {
@@ -67,36 +69,20 @@ final class RMCharacterListView: UIView {
     }
     
     private func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            self.collectionView.isHidden = false
-            UIView.animate(withDuration: 0.3) {
-                self.collectionView.alpha = 1
-                self.spinner.stopAnimating()
-            }
-        })
+        collectionView.delegate = viewModel
+        collectionView.dataSource = viewModel
     }
 }
 
-extension RMCharacterListView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterCollectionViewCell.identifier, for: indexPath) as? RMCharacterCollectionViewCell else {
-            return UICollectionViewCell()
+extension RMCharacterListView: RMCharacterListViewModelDelegate {
+    func didReceivedCharacters() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData()
+        
+        UIView.animate(withDuration: 0.3) {
+            self.collectionView.alpha = 1
+            
         }
-        let viewModel = RMCharacterCollectionViewCellViewModel(name: "deneme", status: "yanilma", imageURL: URL(string: "https://static.tvtropes.org/pmwiki/pub/images/abcb6534_7913_4eb1_a7a5_62b081ebc628.png"))
-        cell.configure(with: viewModel)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let bounds = UIScreen.main.bounds
-        let width = (bounds.width - 30) / 2
-        return CGSize(width: width, height: width * 1.5)
     }
 }
