@@ -8,17 +8,18 @@
 import UIKit
 
 class RMCharacterViewController: UIViewController {
+    
+    let listView = RMCharacterListView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(listView)
         
-        RMService.shared.fetchData(RMRequest.listCharactersRequests, expecting: RMAllCharacters.self) { result in
-            switch result {
-            case .success(let result):
-                print(result)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        NSLayoutConstraint.activate([
+            listView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            listView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            listView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
